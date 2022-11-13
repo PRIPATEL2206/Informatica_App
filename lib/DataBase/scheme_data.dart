@@ -3,7 +3,12 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 class SchemeData {
-  static String dataLangVage = "en";
+  static Map<String, String> avalableLang = {
+    "gu": "Gujarati",
+    "en": "English",
+  };
+
+  static String dataLangvage = "en";
 
   static bool isDataLoaded = false;
 
@@ -14,9 +19,9 @@ class SchemeData {
   static Future<void> putDataInSchemeData() async {
     //  tack data from jason file
     String response = "";
-    if (dataLangVage == "en") {
+    if (dataLangvage == "en") {
       response = await rootBundle.loadString("assets/Data/SchemeEnglish.json");
-    } else if (dataLangVage == "gu") {
+    } else if (dataLangvage == "gu") {
       response = await rootBundle.loadString("assets/Data/SchemeGujarati.json");
     }
     schemeData = await json.decode(response);

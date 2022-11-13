@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class SchemeAppBar extends StatelessWidget {
   const SchemeAppBar({super.key});
@@ -8,7 +6,7 @@ class SchemeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text("Yojana Kendra"),
+      title: const Text("Yojana Kendra"),
     );
   }
 }

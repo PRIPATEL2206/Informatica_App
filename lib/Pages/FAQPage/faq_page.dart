@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../DataBase/home_data.dart';
+import '../../DataBase/home_data.dart';
 
 class FAQPage extends StatefulWidget {
   const FAQPage({super.key});
@@ -20,25 +20,25 @@ class _FAQPageState extends State<FAQPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     if (!HomePageData.isDataLoaded) {
       lodehomeData();
-    } else
+    } else {
       data = HomePageData.homeData;
+    }
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return data["AboutHeading"] == null
-        ? Text("loding..")
+        ? const Text("loding..")
         : Scaffold(
             appBar: AppBar(
-              title: Text("Yojana Kendra"),
+              title: const Text("Yojana Kendra"),
             ),
             body: SingleChildScrollView(
               child: Column(children: [
-                Text(
+                const Text(
                   "FAQ",
                   style: TextStyle(fontSize: 30),
                 ),
@@ -46,21 +46,24 @@ class _FAQPageState extends State<FAQPage> {
                   height: 4,
                   color: Colors.orange,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 for (int i = 0; i < data["FAQQuestions"].length; i++)
-                  Wrap(
-                    children: [
-                      Text(
-                          style: TextStyle(),
-                          softWrap: true,
-                          "${i + 1}.  ${data["FAQQuestions"][i]}"),
-                      Text("Ans  ${data["FAQAnswers"][i]}"),
-                      SizedBox(
-                        height: 60,
-                      )
-                    ],
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Wrap(
+                        children: [
+                          Text(
+                              style: const TextStyle(),
+                              softWrap: true,
+                              "${data["FAQQuestions"][i]}"),
+                          const SizedBox(height: 20),
+                          Text("Ans  ${data["FAQAnswers"][i]}"),
+                        ],
+                      ),
+                    ),
                   ),
               ]),
             ),

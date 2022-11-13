@@ -4,7 +4,7 @@ import 'package:informatica/DataBase/scheme_data.dart';
 
 class AllSchemesTab extends StatelessWidget {
   final List<dynamic> allSchemesData;
-  List spradedAllSchemeData = [];
+  final List spradedAllSchemeData = [];
 
   AllSchemesTab({super.key, required this.allSchemesData});
 
@@ -27,27 +27,29 @@ class AllSchemesTab extends StatelessWidget {
 
     return ListView.separated(
         shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.vertical,
         itemBuilder: (context, schemeNameIndex) {
           return spradedAllSchemeData[schemeNameIndex].length == 0
-              ? SizedBox()
+              ? const SizedBox()
               : Container(
-                  margin: EdgeInsets.only(top: 5),
+                  margin: const EdgeInsets.only(top: 5),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "${SchemeData.typeOfSchemes[schemeNameIndex]}",
-                        style: TextStyle(fontSize: 24),
+                        SchemeData.typeOfSchemes[schemeNameIndex],
+                        style: const TextStyle(fontSize: 24),
                       ),
-                      Container(
-                        height: 200,
-                        padding: EdgeInsets.fromLTRB(1, 6, 1, 6),
-                        // color: Colors.orange,
-                        child: ListView.separated(
+                      ConstrainedBox(
+                        constraints: const BoxConstraints(maxHeight: 220),
+
+                        // height: 220,
+                        // padding: const EdgeInsets.fromLTRB(1, 6, 1, 6),
+                        // // color: Colors.orange,
+                        child: ListView.builder(
                           shrinkWrap: true,
-                          physics: BouncingScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
                           itemBuilder: (context, index) {
                             return Scheme(
                                 schemeData:
@@ -57,16 +59,13 @@ class AllSchemesTab extends StatelessWidget {
                           itemCount:
                               spradedAllSchemeData[schemeNameIndex].length,
                           scrollDirection: Axis.horizontal,
-                          separatorBuilder: (context, index) => SizedBox(
-                            width: 7,
-                          ),
                         ),
                       )
                     ],
                   ),
                 );
         },
-        separatorBuilder: ((context, index) => SizedBox(
+        separatorBuilder: ((context, index) => const SizedBox(
               height: 10,
             )),
         itemCount: SchemeData.typeOfSchemes.length);

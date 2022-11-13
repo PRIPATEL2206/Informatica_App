@@ -1,20 +1,21 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:informatica/Pages/FAQPage/faq_page.dart';
+import 'package:informatica/Pages/HomePage/home_page.dart';
+import 'package:informatica/Pages/SchemePage/schemes_page.dart';
+import 'package:informatica/Pages/SettingPage/setting_page.dart';
 
 class UserNavigationBar extends StatefulWidget {
   final Function changePage;
   const UserNavigationBar({super.key, required this.changePage});
   @override
-  State<UserNavigationBar> createState() =>
-      _UserNavigationBarState(changePage: changePage);
+  State<UserNavigationBar> createState() => _UserNavigationBarState();
 }
 
 class _UserNavigationBarState extends State<UserNavigationBar> {
   static int _index = 0;
-  final Function changePage;
 
-  _UserNavigationBarState({required this.changePage});
+  _UserNavigationBarState();
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -24,13 +25,33 @@ class _UserNavigationBarState extends State<UserNavigationBar> {
       onTap: (value) {
         setState(() {
           _index = value;
-          changePage(_index);
+
+          switch (_index) {
+            case 0:
+              widget.changePage(const HomePage());
+              break;
+            case 1:
+              widget.changePage(const SchemesPage());
+              break;
+            case 2:
+              widget.changePage(const HomePage());
+              break;
+            case 3:
+              widget.changePage(const FAQPage());
+              break;
+            case 4:
+              widget.changePage(const SettingPage());
+              break;
+
+            default:
+              widget.changePage(const HomePage());
+          }
         });
       },
       fixedColor: Colors.orangeAccent,
       unselectedItemColor: Colors.orange,
-      backgroundColor: Color.fromARGB(255, 231, 150, 28),
-      items: [
+      backgroundColor: const Color.fromARGB(255, 231, 150, 28),
+      items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: "Home",
@@ -48,8 +69,8 @@ class _UserNavigationBarState extends State<UserNavigationBar> {
           label: "FAQ",
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: "User",
+          icon: Icon(CupertinoIcons.settings),
+          label: "Setting",
         ),
       ],
     );

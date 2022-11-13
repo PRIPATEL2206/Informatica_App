@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:informatica/DataBase/home_data.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -12,8 +12,9 @@ class _HomePageState extends State<HomePage> {
   Map data = {};
 
   Future<void> lodehomeData() async {
-    await HomePageData.putDataInHomeData();
-
+    if (!HomePageData.isDataLoaded) {
+      await HomePageData.putDataInHomeData();
+    }
     setState(() {
       data = HomePageData.homeData;
     });
@@ -21,28 +22,24 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
-    if (!HomePageData.isDataLoaded) {
-      lodehomeData();
-    } else
-      data = HomePageData.homeData;
     super.initState();
+    lodehomeData();
   }
 
   @override
   Widget build(BuildContext context) {
     // print(HomePageData.homeData);
-    return data["AboutHeading"] == null
-        ? Text("loding...")
-        : Scaffold(
-            appBar: AppBar(
-              title: Text("Yojana Kendra"),
-            ),
-            body: SingleChildScrollView(
-              padding: EdgeInsets.all(15),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Yojana Kendra"),
+      ),
+      body: HomePageData.isDataLoaded
+          ? SingleChildScrollView(
+              padding: const EdgeInsets.all(15),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
@@ -50,29 +47,29 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Text(
                         data["AboutHeading"],
-                        style: TextStyle(fontSize: 30),
+                        style: const TextStyle(fontSize: 30),
                       ),
-                      Text(
+                      const Text(
                         " Yojana Kendra",
                         style: TextStyle(color: Colors.orange, fontSize: 30),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(
                     data["AboutSubHeading"],
-                    style: TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 20),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(
                     data["AboutText"],
                     textAlign: TextAlign.justify,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
@@ -83,14 +80,14 @@ class _HomePageState extends State<HomePage> {
                           child: Text(
                             data["ExploreButton"],
                           )),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       ElevatedButton(
                           onPressed: () {}, child: Text(data["QueryButton"])),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Container(
@@ -98,16 +95,26 @@ class _HomePageState extends State<HomePage> {
                     width: 2000,
                     child: Text(data["RUheading"],
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 25)),
+                        style: const TextStyle(fontSize: 25)),
                   ),
                   for (int i = 0; i < data["RUList"].length; i++)
-                    Container(
-                        margin:
-                            EdgeInsets.symmetric(horizontal: 0, vertical: 5),
-                        child: Text("${i + 1}.  ${data["RUList"][i]}"))
+                    Card(
+                        borderOnForeground: true,
+                        elevation: 5,
+                        surfaceTintColor: Colors.orange,
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("${i + 1}.  ${data["RUList"][i]}"),
+                          ),
+                        ))
                 ],
               ),
+            )
+          : const Center(
+              child: CircularProgressIndicator(),
             ),
-          );
+    );
   }
 }
