@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1027105202373-la139lm81um5g04qphae5oieobpinpn9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1027105202373-la139lm81um5g04qphae5oieobpinpn9</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB6dFA98zCYKQgH7pLlGlgXov6AS4F0tW8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1027105202373</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.informatica</string>
+	<key>PROJECT_ID</key>
+	<string>bigquery-demo-public-data</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bigquery-demo-public-data.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1027105202373:ios:e2a6bcfcea1b37c3cfd0ac</string>
+	<key>DATABASE_URL</key>
+	<string>https://bigquery-demo-public-data-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>

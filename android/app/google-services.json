@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1027105202373",
+    "firebase_url": "https://bigquery-demo-public-data-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "bigquery-demo-public-data",
+    "storage_bucket": "bigquery-demo-public-data.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027105202373:android:151e3edbe892a188cfd0ac",
+        "android_client_info": {
+          "package_name": "com.example.informatica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027105202373-7ujmi5voi4bem8531fe5dnushs4cd0u5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGoxWFtVdRO_vizCyBO-GodMy3rmUVmnc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027105202373-7ujmi5voi4bem8531fe5dnushs4cd0u5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1027105202373-la139lm81um5g04qphae5oieobpinpn9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.informatica"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,9 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:informatica/Constans/ThemeData/change.dart';
+import 'package:informatica/firebase_options.dart';
 import 'Pages/user_navigation_bar.dart';
 import 'Pages/HomePage/home_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
