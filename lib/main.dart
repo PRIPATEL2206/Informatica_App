@@ -7,7 +7,7 @@ import 'Pages/HomePage/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const MyApp());
 }
 
@@ -30,12 +30,26 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    final Future<FirebaseApp> firebaseIntialize =
+        Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Yojana kendra',
         theme: ThemeAdjustment.currentTheme,
         home: Scaffold(
-          body: _curentPage,
+          body: FutureBuilder(
+            future: firebaseIntialize,
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return const Center(
+                    child: Card(child: Text("error plase on internate")));
+              }
+              if (snapshot.hasData) {
+                return _curentPage;
+              }
+              return const CircularProgressIndicator();
+            },
+          ),
           bottomNavigationBar: UserNavigationBar(changePage: changePageTo),
         ));
   }

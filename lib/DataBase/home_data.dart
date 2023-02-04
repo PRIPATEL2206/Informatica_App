@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/services.dart';
 
 class HomePageData {
@@ -8,6 +9,11 @@ class HomePageData {
   static Map homeData = {};
 
   static Future<void> putDataInHomeData() async {
+    await FirebaseDatabase.instance
+        .ref()
+        .get()
+        .then((value) => print(value.value));
+
     //  tack data from jason file
     String response = "";
     if (dataLangvage == "en") {
