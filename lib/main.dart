@@ -42,7 +42,8 @@ class _MyAppState extends State<MyApp> {
             builder: (context, snapshot) {
               if (snapshot.hasError) {
                 return const Center(
-                    child: Card(child: Text("error plase on internate")));
+                    child: Card(
+                        child: Text("error plase on internate connection")));
               }
               if (snapshot.hasData) {
                 return _curentPage;

@@ -16,14 +16,6 @@ class _SettingPageState extends State<SettingPage> {
   bool svalue = ThemeAdjustment.isDarkMode;
 
   @override
-  void dispose() {
-    super.dispose();
-    if (!SchemeData.isDataLoaded) {
-      SchemeData.putDataInSchemeData();
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
