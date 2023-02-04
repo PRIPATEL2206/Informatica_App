@@ -70,10 +70,6 @@ flutter:
     - assets/images/other/
     - assets/images/sports/
     - assets/images/women/
-    - assets/Data/HomePageEnglish.json
-    - assets/Data/HomePageGujarati.json
-    - assets/Data/SchemeEnglish.json
-    - assets/Data/SchemeGujarati.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
