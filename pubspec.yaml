@@ -69,6 +69,7 @@ flutter:
     - assets/images/education/
     - assets/images/other/
     - assets/images/sports/
+    - assets/Data/data.json
     - assets/images/women/
   #   - images/a_dot_ham.jpeg
 

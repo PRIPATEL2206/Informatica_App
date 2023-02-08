@@ -1,4 +1,7 @@
+import 'dart:async';
+import 'dart:convert';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/services.dart';
 
 class HomePageData {
   static bool isDataLoaded = false;
@@ -7,19 +10,27 @@ class HomePageData {
   static Map homeData = {};
 
   static Future<void> putDataInHomeData() async {
-    //  tack data from jason file
-    // String response = "";
-    // if (dataLangvage == "en") {
-    //   response =
-    //       await rootBundle.loadString("assets/Data/HomePageEnglish.json");
-    // } else if (dataLangvage == "gu") {
-    //   response =
-    //       await rootBundle.loadString("assets/Data/HomePageGujarati.json");
-    // }
-    // homeData = await json.decode(response)[0];
-
     // take data from firebase realtime database database
+    _putDataFromFirebase();
 
+    await Future.delayed(const Duration(seconds: 7));
+
+    if (!isDataLoaded) {
+      //  tack data from jason file
+      String response = "";
+      response = await rootBundle.loadString("assets/Data/data.json");
+
+      if (dataLangvage == "en") {
+        fullData = await json.decode(response)[0];
+      } else if (dataLangvage == "gu") {
+        fullData = await json.decode(response)[1];
+      }
+      homeData = fullData["homePageData"];
+      isDataLoaded = true;
+    }
+  }
+
+  static Future<void> _putDataFromFirebase() async {
     String choosenLangvageForData = "en";
     if (dataLangvage == "en") {
       choosenLangvageForData = "EnglishData";
@@ -33,7 +44,6 @@ class HomePageData {
               if (value.value != null)
                 {fullData = Map.from(value.value! as Map<Object?, Object?>)}
             });
-
     homeData = fullData["homePageData"];
     isDataLoaded = true;
   }

@@ -42,7 +42,7 @@ class AllSchemesTab extends StatelessWidget {
                         style: const TextStyle(fontSize: 24),
                       ),
                       ConstrainedBox(
-                        constraints: const BoxConstraints(maxHeight: 220),
+                        constraints: const BoxConstraints(maxHeight: 190),
 
                         // height: 220,
                         // padding: const EdgeInsets.fromLTRB(1, 6, 1, 6),

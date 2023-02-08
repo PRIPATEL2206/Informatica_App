@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
               if (snapshot.hasData) {
                 return _curentPage;
               }
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             },
           ),
           bottomNavigationBar: UserNavigationBar(changePage: changePageTo),

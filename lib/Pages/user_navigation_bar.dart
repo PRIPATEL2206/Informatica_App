@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:informatica/Pages/ContectPage/contect_page.dart';
 import 'package:informatica/Pages/FAQPage/faq_page.dart';
 import 'package:informatica/Pages/HomePage/home_page.dart';
 import 'package:informatica/Pages/SchemePage/schemes_page.dart';
@@ -34,7 +35,7 @@ class _UserNavigationBarState extends State<UserNavigationBar> {
               widget.changePage(const SchemesPage());
               break;
             case 2:
-              widget.changePage(const HomePage());
+              widget.changePage(const ContectPage());
               break;
             case 3:
               widget.changePage(const FAQPage());
