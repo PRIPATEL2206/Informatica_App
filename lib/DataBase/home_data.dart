@@ -13,7 +13,7 @@ class HomePageData {
     // take data from firebase realtime database database
     _putDataFromFirebase();
 
-    await Future.delayed(const Duration(seconds: 7));
+    await Future.delayed(const Duration(seconds: 3));
 
     if (!isDataLoaded) {
       //  tack data from jason file
