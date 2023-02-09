@@ -32,90 +32,49 @@ class SchemeDetailPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Catagary      ",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          Text(": ${schemeData["Catagory"]}"),
-                        ],
+                      const Text(
+                        "Benifits :",
+                        style: TextStyle(fontSize: 24),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "MaxAge       ",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          Text(": ${schemeData["MaxAge"]}"),
-                        ],
+                      Container(
+                        height: 4,
+                        width: 80,
+                        color: Colors.orange,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "MaxIncome ",
-                            style: TextStyle(fontSize: 18),
+                      Card(
+                        elevation: 5,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            schemeData["SchemeInfo"],
+                            style: const TextStyle(fontSize: 20),
                           ),
-                          Text(": ${schemeData["MaxIncome"]}"),
-                        ],
+                        ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Gender         ",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          Text(": ${schemeData["TextGender"]}"),
-                        ],
+                      const SizedBox(
+                        height: 8,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Caste           ",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          Text(": ${schemeData["Caste"]}"),
-                        ],
+                      const Text(
+                        "Eligiblity :",
+                        style: TextStyle(fontSize: 24),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Eligiblity      ",
-                            textAlign: TextAlign.start,
-                            softWrap: true,
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          SizedBox(
-                            width: 300,
-                            child: Text(": ${schemeData["EligiblityText"]}",
-                                softWrap: true),
-                          ),
-                        ],
+                      Container(
+                        height: 4,
+                        width: 80,
+                        color: Colors.orange,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "About          ",
-                            style: TextStyle(fontSize: 18),
+                      Card(
+                        elevation: 5,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            schemeData["EligiblityText"],
+                            style: const TextStyle(fontSize: 20),
                           ),
-                          SizedBox(
-                              width: 300,
-                              child: Text(": ${schemeData["SchemeInfo"]}")),
-                        ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 23),

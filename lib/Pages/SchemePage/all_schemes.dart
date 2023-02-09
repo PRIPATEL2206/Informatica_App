@@ -37,9 +37,12 @@ class AllSchemesTab extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
-                        SchemeData.typeOfSchemes[schemeNameIndex],
-                        style: const TextStyle(fontSize: 24),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Text(
+                          SchemeData.typeOfSchemes[schemeNameIndex],
+                          style: const TextStyle(fontSize: 34),
+                        ),
                       ),
                       ConstrainedBox(
                         constraints: const BoxConstraints(maxHeight: 190),
