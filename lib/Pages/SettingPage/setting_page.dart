@@ -61,11 +61,11 @@ class _SettingPageState extends State<SettingPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      "Langvage",
+                      "Language",
                       style: TextStyle(fontSize: 20),
                     ),
                     DropdownButton<String>(
-                      hint: const Text("Langvage"),
+                      hint: const Text("Language"),
                       items: [
                         for (final lang in langs.keys)
                           DropdownMenuItem(

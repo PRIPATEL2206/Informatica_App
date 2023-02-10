@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(
-                      height: 100,
+                      height: 50,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -107,6 +107,9 @@ class _HomePageState extends State<HomePage>
                       child: Text(
                         data["AboutText"],
                         textAlign: TextAlign.justify,
+                        style: const TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                     const SizedBox(
