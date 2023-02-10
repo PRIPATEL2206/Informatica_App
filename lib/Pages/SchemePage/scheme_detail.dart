@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SchemeDetailPage extends StatelessWidget {
   final Map schemeData;
@@ -80,7 +81,10 @@ class SchemeDetailPage extends StatelessWidget {
                         margin: const EdgeInsets.only(top: 23),
                         alignment: Alignment.center,
                         child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              Uri uri = Uri.parse(schemeData["SchemeLink"]);
+                              _launchUrl(uri);
+                            },
                             child: const Text("Go To Scheme")),
                       )
                     ]),
@@ -88,5 +92,11 @@ class SchemeDetailPage extends StatelessWidget {
             )
           ]),
         ));
+  }
+
+  Future<void> _launchUrl(url) async {
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }
