@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:informatica/Constans/route_data.dart';
 import 'package:informatica/Pages/ContectPage/contect_page.dart';
 import 'package:informatica/Pages/FAQPage/faq_page.dart';
 import 'package:informatica/Pages/HomePage/home_page.dart';
@@ -14,20 +15,20 @@ class UserNavigationBar extends StatefulWidget {
 }
 
 class _UserNavigationBarState extends State<UserNavigationBar> {
-  static int _index = 0;
+  // static int _index = UserNavigation.index;
 
   _UserNavigationBarState();
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      currentIndex: _index,
+      currentIndex: UserNavigation.index,
       enableFeedback: true,
       type: BottomNavigationBarType.shifting,
       onTap: (value) {
         setState(() {
-          _index = value;
+          UserNavigation.index = value;
 
-          switch (_index) {
+          switch (UserNavigation.index) {
             case 0:
               widget.changePage(HomePage(
                 changePage: widget.changePage,

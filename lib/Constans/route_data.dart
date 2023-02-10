@@ -1,4 +1,3 @@
-const homePageRoute = "/home";
-const schemePageRoute = "/schemes";
-const settingPageRoute = "/setting";
-const faqPageRoute = "/FAQ";
+class UserNavigation {
+  static int index = 0;
+}

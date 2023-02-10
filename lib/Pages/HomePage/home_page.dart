@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:informatica/Constans/route_data.dart';
 import 'package:informatica/DataBase/home_data.dart';
 import 'package:informatica/Pages/ContectPage/contect_page.dart';
 import 'package:informatica/Pages/SchemePage/schemes_page.dart';
@@ -95,6 +96,7 @@ class _HomePageState extends State<HomePage> {
                         ElevatedButton(
                             onPressed: () {
                               widget.changePage(const SchemesPage());
+                              UserNavigation.index = 1;
                             },
                             child: Text(
                               data["ExploreButton"],
@@ -105,6 +107,7 @@ class _HomePageState extends State<HomePage> {
                         ElevatedButton(
                             onPressed: () {
                               widget.changePage(const ContectPage());
+                              UserNavigation.index = 2;
                             },
                             child: Text(data["QueryButton"])),
                       ],
