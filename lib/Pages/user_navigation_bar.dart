@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:informatica/Constans/route_data.dart';
 import 'package:informatica/Pages/ContectPage/contect_page.dart';
 import 'package:informatica/Pages/FAQPage/faq_page.dart';
 import 'package:informatica/Pages/HomePage/home_page.dart';
 import 'package:informatica/Pages/SchemePage/schemes_page.dart';
 import 'package:informatica/Pages/SettingPage/setting_page.dart';
+
+import '../Constants/route_data.dart';
 
 class UserNavigationBar extends StatefulWidget {
   final Function changePage;

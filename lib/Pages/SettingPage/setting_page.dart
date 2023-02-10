@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:informatica/Constans/ThemeData/change.dart';
 import 'package:informatica/DataBase/home_data.dart';
 import 'package:informatica/DataBase/scheme_data.dart';
+
+import '../../Constants/ThemeData/change.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:informatica/Constans/ThemeData/theme_data.dart';
+import 'package:informatica/Constants/ThemeData/theme_data.dart';
 
 class ThemeAdjustment {
   static final List<ThemeData> _themes = [darkTheme, lightTheme];

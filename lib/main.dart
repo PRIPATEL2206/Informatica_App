@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:informatica/Constans/ThemeData/change.dart';
+import 'package:informatica/Constants/ThemeData/change.dart';
 import 'package:informatica/Pages/LodingScreen/loading_screen.dart';
 import 'Pages/user_navigation_bar.dart';
 import 'Pages/HomePage/home_page.dart';

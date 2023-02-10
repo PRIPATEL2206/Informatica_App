@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:informatica/Constans/route_data.dart';
+import 'package:informatica/Constants/route_data.dart';
 import 'package:informatica/DataBase/home_data.dart';
 import 'package:informatica/Pages/ContectPage/contect_page.dart';
 import 'package:informatica/Pages/SchemePage/schemes_page.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+
+import '../../Components/rounded_button.dart';
 
 class HomePage extends StatefulWidget {
   final Function changePage;
@@ -57,7 +59,7 @@ class _HomePageState extends State<HomePage>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(
-                      height: 20,
+                      height: 100,
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -69,6 +71,9 @@ class _HomePageState extends State<HomePage>
                             fontSize: 40,
                             fontWeight: FontWeight.w500,
                           ),
+                        ),
+                        const SizedBox(
+                          height: 50,
                         ),
                         DefaultTextStyle(
                           style: const TextStyle(
@@ -82,22 +87,13 @@ class _HomePageState extends State<HomePage>
                               TyperAnimatedText('Yojna Portal'),
                               TyperAnimatedText('All in one yojna'),
                             ],
-                            onTap: () {
-                              print("Tap Event");
-                            },
+                            onTap: () {},
                           ),
                         ),
-                        // const Text(
-                        //   " Yojana Kendra",
-                        //   style: TextStyle(
-                        //       color: Colors.orange,
-                        //       fontSize: 65,
-                        //       fontWeight: FontWeight.w700),
-                        // ),
                       ],
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 50,
                     ),
                     Text(
                       data["AboutSubHeading"],
@@ -106,35 +102,37 @@ class _HomePageState extends State<HomePage>
                     const SizedBox(
                       height: 20,
                     ),
-                    Text(
-                      data["AboutText"],
-                      textAlign: TextAlign.justify,
+                    Padding(
+                      padding: const EdgeInsets.all(36.0),
+                      child: Text(
+                        data["AboutText"],
+                        textAlign: TextAlign.justify,
+                      ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                            onPressed: () {
-                              widget.changePage(const SchemesPage());
-                              UserNavigation.index = 1;
-                            },
-                            child: Text(
-                              data["ExploreButton"],
-                            )),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        ElevatedButton(
-                            onPressed: () {
-                              widget.changePage(const ContectPage());
-                              UserNavigation.index = 2;
-                            },
-                            child: Text(data["QueryButton"])),
-                      ],
+                    RoundedButton(
+                      Colors.orange,
+                      () {
+                        widget.changePage(const SchemesPage());
+                        UserNavigation.index = 1;
+                      },
+                      data["ExploreButton"],
                     ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    RoundedButton(Colors.orange, () {
+                      widget.changePage(const ContectPage());
+                      UserNavigation.index = 2;
+                    }, data["QueryButton"]),
+                    // ElevatedButton(
+                    //     onPressed: () {
+                    //       widget.changePage(const ContectPage());
+                    //       UserNavigation.index = 2;
+                    //     },
+                    //     child: Text(data["QueryButton"])),
                     const SizedBox(
                       height: 30,
                     ),

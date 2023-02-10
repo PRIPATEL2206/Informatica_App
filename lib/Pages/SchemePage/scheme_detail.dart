@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../Components/rounded_button.dart';
 
 class SchemeDetailPage extends StatelessWidget {
   final Map schemeData;
@@ -120,12 +121,16 @@ class SchemeDetailPage extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(top: 23),
                         alignment: Alignment.center,
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              Uri uri = Uri.parse(schemeData["SchemeLink"]);
-                              _launchUrl(uri);
-                            },
-                            child: const Text("Go To Scheme")),
+                        child: RoundedButton(Colors.orange, () async {
+                          Uri uri = Uri.parse(schemeData["SchemeLink"]);
+                          _launchUrl(uri);
+                        }, 'Go To Scheme'),
+                        // ElevatedButton(
+                        //     onPressed: () async {
+                        //       Uri uri = Uri.parse(schemeData["SchemeLink"]);
+                        //       _launchUrl(uri);
+                        //     },
+                        //     child: const Text("Go To Scheme")),
                       )
                     ]),
               ),
