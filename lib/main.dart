@@ -21,17 +21,24 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  bool pageChange = false;
   // This widget is the root of your application.
-
-  Widget _curentPage = const HomePage();
 
   void changePageTo(Widget page) {
     _curentPage = page;
+    pageChange = true;
     setState(() {});
   }
 
+  late Widget _curentPage;
+
   @override
   Widget build(BuildContext context) {
+    if (!pageChange) {
+      _curentPage = HomePage(
+        changePage: changePageTo,
+      );
+    }
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Yojana kendra',

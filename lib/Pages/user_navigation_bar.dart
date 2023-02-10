@@ -29,7 +29,9 @@ class _UserNavigationBarState extends State<UserNavigationBar> {
 
           switch (_index) {
             case 0:
-              widget.changePage(const HomePage());
+              widget.changePage(HomePage(
+                changePage: widget.changePage,
+              ));
               break;
             case 1:
               widget.changePage(const SchemesPage());
@@ -45,7 +47,9 @@ class _UserNavigationBarState extends State<UserNavigationBar> {
               break;
 
             default:
-              widget.changePage(const HomePage());
+              widget.changePage(HomePage(
+                changePage: widget.changePage,
+              ));
           }
         });
       },
