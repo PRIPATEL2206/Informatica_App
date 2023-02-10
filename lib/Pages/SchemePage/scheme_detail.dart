@@ -43,7 +43,7 @@ class SchemeDetailPage extends StatelessWidget {
                         color: Colors.orange,
                       ),
                       Card(
-                        elevation: 5,
+                        elevation: 1,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
@@ -65,12 +65,52 @@ class SchemeDetailPage extends StatelessWidget {
                         color: Colors.orange,
                       ),
                       Card(
-                        elevation: 5,
+                        elevation: 1,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            schemeData["EligiblityText"],
-                            style: const TextStyle(fontSize: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                schemeData["EligiblityText"],
+                                style: const TextStyle(fontSize: 20),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                "Maximum age : ${schemeData["MaxAge"].toString()}",
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w700),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Maximum Income : ${schemeData["MaxIncome"].toString()}",
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w700),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Caste : ${schemeData["Caste"].toString()}",
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w700),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Gender : ${schemeData["TextGender"].toString()}",
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w700),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -95,7 +135,7 @@ class SchemeDetailPage extends StatelessWidget {
   }
 
   Future<void> _launchUrl(url) async {
-    if (!await launchUrl(url)) {
+    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
       throw Exception('Could not launch $url');
     }
   }
