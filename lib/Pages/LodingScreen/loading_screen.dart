@@ -19,7 +19,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
           await Firebase.initializeApp(
               options: DefaultFirebaseOptions.currentPlatform),
           await HomePageData.putDataInHomeData(),
-          Navigator.push(
+          Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                 builder: (context) => const MyApp(),

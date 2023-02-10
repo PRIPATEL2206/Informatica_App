@@ -3,7 +3,7 @@ import 'package:informatica/Constans/route_data.dart';
 import 'package:informatica/DataBase/home_data.dart';
 import 'package:informatica/Pages/ContectPage/contect_page.dart';
 import 'package:informatica/Pages/SchemePage/schemes_page.dart';
-// import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class HomePage extends StatefulWidget {
   final Function changePage;
@@ -17,7 +17,9 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  AnimationController? controller;
   Map data = {};
 
   Future<void> lodehomeData() async {
@@ -33,6 +35,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    controller = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    );
     lodehomeData();
   }
 
@@ -60,17 +66,34 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           data["AboutHeading"],
                           style: const TextStyle(
-                            fontSize: 60,
+                            fontSize: 40,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        const Text(
-                          " Yojana Kendra",
-                          style: TextStyle(
-                              color: Colors.orange,
-                              fontSize: 65,
-                              fontWeight: FontWeight.w700),
+                        DefaultTextStyle(
+                          style: const TextStyle(
+                            color: Colors.orange,
+                            fontSize: 60.0,
+                            fontWeight: FontWeight.w700,
+                          ),
+                          child: AnimatedTextKit(
+                            animatedTexts: [
+                              TyperAnimatedText('Yojna Kendra'),
+                              TyperAnimatedText('Yojna Portal'),
+                              TyperAnimatedText('All in one yojna'),
+                            ],
+                            onTap: () {
+                              print("Tap Event");
+                            },
+                          ),
                         ),
+                        // const Text(
+                        //   " Yojana Kendra",
+                        //   style: TextStyle(
+                        //       color: Colors.orange,
+                        //       fontSize: 65,
+                        //       fontWeight: FontWeight.w700),
+                        // ),
                       ],
                     ),
                     const SizedBox(
