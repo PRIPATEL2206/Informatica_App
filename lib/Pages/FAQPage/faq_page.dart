@@ -52,15 +52,21 @@ class _FAQPageState extends State<FAQPage> {
                 for (int i = 0; i < data["FAQQuestions"].length; i++)
                   Card(
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(24.0),
                       child: Wrap(
                         children: [
                           Text(
-                              style: const TextStyle(),
-                              softWrap: true,
-                              "${data["FAQQuestions"][i]}"),
-                          const SizedBox(height: 20),
-                          Text("Ans  ${data["FAQAnswers"][i]}"),
+                            "${data["FAQQuestions"][i]}",
+                            style: const TextStyle(
+                              fontSize: 20,
+                            ),
+                            softWrap: true,
+                          ),
+                          const SizedBox(height: 50),
+                          Text(
+                            "Ans  ${data["FAQAnswers"][i]}",
+                            style: const TextStyle(fontSize: 16),
+                          ),
                         ],
                       ),
                     ),
