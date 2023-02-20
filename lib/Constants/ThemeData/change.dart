@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:informatica/Constans/ThemeData/theme_data.dart';
+import 'package:informatica/Constants/ThemeData/theme_data.dart';
 
 class ThemeAdjustment {
   static final List<ThemeData> _themes = [darkTheme, lightTheme];
-  static int _currentThemeIndex = 0;
+  static int _currentThemeIndex = 1;
 
   static ThemeData get currentTheme {
     return _themes[_currentThemeIndex];

@@ -1,14 +1,16 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:informatica/Constans/ThemeData/change.dart';
-import 'package:informatica/firebase_options.dart';
+import 'package:informatica/Constants/ThemeData/change.dart';
+import 'package:informatica/Pages/LodingScreen/loading_screen.dart';
 import 'Pages/user_navigation_bar.dart';
 import 'Pages/HomePage/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MyApp());
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: LoadingScreen(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -19,38 +21,30 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  bool pageChange = false;
   // This widget is the root of your application.
-
-  Widget _curentPage = const HomePage();
 
   void changePageTo(Widget page) {
     _curentPage = page;
+    pageChange = true;
     setState(() {});
   }
 
+  late Widget _curentPage;
+
   @override
   Widget build(BuildContext context) {
-    final Future<FirebaseApp> firebaseIntialize =
-        Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+    if (!pageChange) {
+      _curentPage = HomePage(
+        changePage: changePageTo,
+      );
+    }
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Yojana kendra',
         theme: ThemeAdjustment.currentTheme,
         home: Scaffold(
-          body: FutureBuilder(
-            future: firebaseIntialize,
-            builder: (context, snapshot) {
-              if (snapshot.hasError) {
-                return const Center(
-                    child: Card(
-                        child: Text("error plase on internate connection")));
-              }
-              if (snapshot.hasData) {
-                return _curentPage;
-              }
-              return const Center(child: CircularProgressIndicator());
-            },
-          ),
+          body: _curentPage,
           bottomNavigationBar: UserNavigationBar(changePage: changePageTo),
         ));
   }

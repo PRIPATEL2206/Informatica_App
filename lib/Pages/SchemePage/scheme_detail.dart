@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../Components/rounded_button.dart';
 
 class SchemeDetailPage extends StatelessWidget {
   final Map schemeData;
@@ -32,102 +34,114 @@ class SchemeDetailPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Catagary      ",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          Text(": ${schemeData["Catagory"]}"),
-                        ],
+                      const Text(
+                        "Benifits :",
+                        style: TextStyle(fontSize: 24),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "MaxAge       ",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          Text(": ${schemeData["MaxAge"]}"),
-                        ],
+                      Container(
+                        height: 4,
+                        width: 80,
+                        color: Colors.orange,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "MaxIncome ",
-                            style: TextStyle(fontSize: 18),
+                      Card(
+                        elevation: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            schemeData["SchemeInfo"],
+                            style: const TextStyle(fontSize: 20),
                           ),
-                          Text(": ${schemeData["MaxIncome"]}"),
-                        ],
+                        ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Gender         ",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          Text(": ${schemeData["TextGender"]}"),
-                        ],
+                      const SizedBox(
+                        height: 8,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Caste           ",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          Text(": ${schemeData["Caste"]}"),
-                        ],
+                      const Text(
+                        "Eligiblity :",
+                        style: TextStyle(fontSize: 24),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Eligiblity      ",
-                            textAlign: TextAlign.start,
-                            softWrap: true,
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          SizedBox(
-                            width: 300,
-                            child: Text(": ${schemeData["EligiblityText"]}",
-                                softWrap: true),
-                          ),
-                        ],
+                      Container(
+                        height: 4,
+                        width: 80,
+                        color: Colors.orange,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "About          ",
-                            style: TextStyle(fontSize: 18),
+                      Card(
+                        elevation: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                schemeData["EligiblityText"],
+                                style: const TextStyle(fontSize: 20),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                "Maximum age : ${schemeData["MaxAge"].toString()}",
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w700),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Maximum Income : ${schemeData["MaxIncome"].toString()}",
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w700),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Caste : ${schemeData["Caste"].toString()}",
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w700),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Gender : ${schemeData["TextGender"].toString()}",
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w700),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                            ],
                           ),
-                          SizedBox(
-                              width: 300,
-                              child: Text(": ${schemeData["SchemeInfo"]}")),
-                        ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 23),
                         alignment: Alignment.center,
-                        child: ElevatedButton(
-                            onPressed: () {},
-                            child: const Text("Go To Scheme")),
+                        child: RoundedButton(Colors.orange, () async {
+                          Uri uri = Uri.parse(schemeData["SchemeLink"]);
+                          _launchUrl(uri);
+                        }, 'Go To Scheme'),
+                        // ElevatedButton(
+                        //     onPressed: () async {
+                        //       Uri uri = Uri.parse(schemeData["SchemeLink"]);
+                        //       _launchUrl(uri);
+                        //     },
+                        //     child: const Text("Go To Scheme")),
                       )
                     ]),
               ),
             )
           ]),
         ));
+  }
+
+  Future<void> _launchUrl(url) async {
+    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }

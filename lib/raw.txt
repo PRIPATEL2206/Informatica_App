@@ -1,0 +1,85 @@
+Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Catagary      ",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          Text(": ${schemeData["Catagory"]}"),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "MaxAge       ",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          Text(": ${schemeData["MaxAge"]}"),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "MaxIncome ",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          Text(": ${schemeData["MaxIncome"]}"),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Gender         ",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          Text(": ${schemeData["TextGender"]}"),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Caste           ",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          Text(": ${schemeData["Caste"]}"),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Eligiblity      ",
+                            textAlign: TextAlign.start,
+                            softWrap: true,
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(
+                            width: 300,
+                            child: Text(": ${schemeData["EligiblityText"]}",
+                                softWrap: true),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "About          ",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          SizedBox(
+                              width: 300,
+                              child: Text(": ${schemeData["SchemeInfo"]}")),
+                        ],
+                      ),

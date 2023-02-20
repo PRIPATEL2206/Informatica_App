@@ -6,6 +6,8 @@ import 'package:informatica/Pages/HomePage/home_page.dart';
 import 'package:informatica/Pages/SchemePage/schemes_page.dart';
 import 'package:informatica/Pages/SettingPage/setting_page.dart';
 
+import '../Constants/route_data.dart';
+
 class UserNavigationBar extends StatefulWidget {
   final Function changePage;
   const UserNavigationBar({super.key, required this.changePage});
@@ -14,22 +16,24 @@ class UserNavigationBar extends StatefulWidget {
 }
 
 class _UserNavigationBarState extends State<UserNavigationBar> {
-  static int _index = 0;
+  // static int _index = UserNavigation.index;
 
   _UserNavigationBarState();
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      currentIndex: _index,
+      currentIndex: UserNavigation.index,
       enableFeedback: true,
       type: BottomNavigationBarType.shifting,
       onTap: (value) {
         setState(() {
-          _index = value;
+          UserNavigation.index = value;
 
-          switch (_index) {
+          switch (UserNavigation.index) {
             case 0:
-              widget.changePage(const HomePage());
+              widget.changePage(HomePage(
+                changePage: widget.changePage,
+              ));
               break;
             case 1:
               widget.changePage(const SchemesPage());
@@ -45,7 +49,9 @@ class _UserNavigationBarState extends State<UserNavigationBar> {
               break;
 
             default:
-              widget.changePage(const HomePage());
+              widget.changePage(HomePage(
+                changePage: widget.changePage,
+              ));
           }
         });
       },
